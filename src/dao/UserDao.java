@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Map;
 
 import db.DBUtil;
-import model.User;
 import util.*;
 
 public class UserDao {
