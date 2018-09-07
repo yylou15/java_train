@@ -63,6 +63,60 @@ public class UserDao {
     }
 
     /*
+     *  获取个人信息
+     */
+    public static User getInfoByName(String name) throws Exception{
+        User user = new User();
+        Connection conn = DBUtil.getConnection();
+        PreparedStatement ptmt = conn.prepareStatement("SELECT * FROM tieyif4_user_info WHERE  `name` = ?");
+        ptmt.setString(1,name);
+        ResultSet rs = ptmt.executeQuery();
+        if(rs.next()){
+            user.setName(rs.getString("name"));
+            user.setUid(rs.getInt("uid"));
+            user.setScore(rs.getInt("level_score"));
+            user.setStar(rs.getInt("level_star"));
+            user.setAvatarUrl(rs.getString("avatarUrl"));
+            user.setPhone(rs.getString("phone"));
+            user.setQq(rs.getString("qq"));
+            user.setTotalBorrow(rs.getInt("totalborrow"));
+            user.setTotalLend(rs.getInt("totallend"));
+            user.setIntroduction(rs.getString("introduction"));
+            return user;
+        }else {
+            return null;
+        }
+    }
+
+
+    /*
+     *  更新个人信息
+     */
+    public static returnObj updateInfo(User user){
+        returnObj res = new returnObj();
+        try{
+            Connection conn = DBUtil.getConnection();
+            PreparedStatement ptmt = conn.prepareStatement("UPDATE tieyif4_user_info SET name=?,level_score=?,level_star=?,avatarUrl=?,phone=?,qq=?,totalborrow=?,totallend=?,introduction=? WHERE `uid` = ?");
+            ptmt.setString(1,user.getName());
+            ptmt.setInt(2,user.getScore());
+            ptmt.setInt(3,user.getStar());
+            ptmt.setString(4,user.getAvatarUrl());
+            ptmt.setString(5,user.getPhone());
+            ptmt.setString(6,user.getQq());
+            ptmt.setInt(7,user.getTotalBorrow());
+            ptmt.setInt(8,user.getTotalLend());
+            ptmt.setString(9,user.getIntroduction());
+            ptmt.setInt(10,user.getUid());
+            ptmt.execute();
+            res.setStatus(true);
+        }catch (Exception E){
+            res.setStatus(false);
+            res.setMsg(E.getMessage());
+        }
+        return res;
+    }
+
+    /*
         提交密码
      */
     public static void submitPwd(User user,String pwd) throws Exception{
@@ -117,6 +171,7 @@ public class UserDao {
                 String hashedpwd = rs1.getString("password");
                 if(CryptoUtils.verify(hashedpwd,pwd,salt)){
                     res.setStatus(true);
+                    res.setMsg("登录成功");
                 }else{
                     res.setStatus(false);
                     res.setMsg("密码错误");

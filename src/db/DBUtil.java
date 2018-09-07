@@ -27,5 +27,16 @@ public class DBUtil {
     public static Connection getConnection(){
         return conn;
     }
+    public static void close(Connection conn) {
+        if(conn!=null) {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    }
+
 
 }
