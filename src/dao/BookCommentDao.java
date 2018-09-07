@@ -14,16 +14,16 @@ import java.util.Map;
 import db.DBUtil;
 import util.*;
 public class BookCommentDao {
-    public static List<BookComment> getCommentsByBookId(){
-
-    }
-    public static returnObj uploadComment(BookComment comment){
-
-    }
-    public static returnObj deleteComment(String commentid){
-
-    }
-    public static returnObj updateComment(BookComment comment){
-
-    }
+//    public static List<BookComment> getCommentsByBookId() throws Exception{
+//
+//    }
+//    public static returnObj uploadComment(BookComment comment) throws Exception{
+//
+//    }
+//    public static returnObj deleteComment(String commentid) throws Exception{
+//
+//    }
+//    public static returnObj updateComment(BookComment comment) throws Exception{
+//
+//    }
 }

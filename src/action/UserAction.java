@@ -9,7 +9,8 @@ import java.util.*;
 
 
 
-import dao.UserDao;
+import dao.*;
+import model.Book;
 import util.*;
 import model.User;
 import db.DBUtil;
@@ -17,16 +18,21 @@ import db.DBUtil;
 
 public class UserAction {
     public static void main(String[] args) throws Exception{
-        User user = new User();
-        user.setName("楼远洋");
-        String pwd = "14536878";
-        returnObj res = UserDao.submitInfo(user);
-        UserDao.submitPwd(user,pwd);
-        System.out.println(UserDao.checkPassword("楼远洋","1453687").getStatus());
-        System.out.println(res.getStatus());
-        System.out.println(res.getMsg());
+//        User user = new User();
+//        user.setName("楼远洋");
+//        String pwd = "14536878";
+//        returnObj res = UserDao.submitInfo(user);
+//        UserDao.submitPwd(user,pwd);
+//        System.out.println(UserDao.checkPassword("楼远洋","1453687").getStatus());
+//        System.out.println(res.getStatus());
+//        System.out.println(res.getMsg());
 //        checkPassword(user.getName(),"2323");
-
+//        BookDao.getBookByBid(10014);
+        Book book = new Book();
+        book.setBid(10029);
+        book.setName("LOU");
+        book.setOwnerid(1006);
+        System.out.println(BookDao.insertBook(book).getStatus());
     }
 
 

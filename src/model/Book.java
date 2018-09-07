@@ -4,7 +4,7 @@ public class Book{
     private int bid;
     private String name;
     private String author;
-    private String pagenum;
+    private int pagenum;
     private String introduction;
     private int status;
     private int count;
@@ -35,11 +35,11 @@ public class Book{
         this.author = author;
     }
 
-    public String getPagenum() {
+    public int getPagenum() {
         return pagenum;
     }
 
-    public void setPagenum(String pagenum) {
+    public void setPagenum(int pagenum) {
         this.pagenum = pagenum;
     }
 
